@@ -1,0 +1,23 @@
+{
+  "name": "tmdb-api",
+  "version": "1.0.0",
+  "description": "Web based on TMDB Api",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathangalimberti/TMDB-API.git"
+  },
+  "author": "@jonathangalimberti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonathangalimberti/TMDB-API/issues"
+  },
+  "homepage": "https://github.com/jonathangalimberti/TMDB-API#readme",
+  "dependencies": {
+    "axios": "^1.13.6",
+    "bootstrap": "^5.3.8"
+  }
+}
