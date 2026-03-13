@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/jonathangalimberti/TMDB-API#readme",
   "dependencies": {
-    "axios": "^1.13.6",
-    "bootstrap": "^5.3.8"
+    "axios": "^1.13.6"
   }
 }

@@ -1,14 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Styles/app.css">
-    <title>TMDB API</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./Styles/app.css" />
+  <title>TMDB API</title>
 </head>
+
 <body>
-    
-    <script src="./src/secret.js"></script>
-    <script src="./src/app.js"></script>
+  <header>
+    <div class="offcanvas offcanvas-start bg-dark bg-gradient opacity-75 text-white" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+      aria-labelledby="staticBackdropLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="staticBackdropLabel">Profile</h5>
+        <button type="button" class="btn-close btn-close-white fw-bolder" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column justify-content-start">
+        <ul class="list-group d-inline fs-5 rounded-0">
+          <li class="list-group-item bg-transparent text-white border-0 border-bottom">My movies</li>
+          <li class="list-group-item bg-transparent text-white border-0 border-bottom">My tv shows</li>
+          <li class="list-group-item bg-transparent text-white border-0 border-bottom">My watchlist</li>
+        </ul>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-dark bg-gradient">
+      <div class="container-fluid ">
+        <a class="navbar-brand " href="#" onclick="reload()"><img
+            src="/img/film-3.png"
+            alt="Logo" srcset="" id="logo" style="width: 50px;"></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="#">Movies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">TV show</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Favoritos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 px-4" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-light" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+        <button class="btn btn-primary ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
+          aria-controls="staticBackdrop">
+          Profile
+        </button>
+      </div>
+
+    </nav>
+  </header>
+  <main>
+    <section id="banner" class="h-100 bg-body-secondary d-flex banner-background" >
+      <div class="col-6 flex-column justify-content-center align-items-start d-flex mx-2  absolute">
+        <h1 class="display-4 fw-bold text-white">Welcome to TMDB</h1>
+        <p class="lead text-white fw-bolder">Discover the latest movies, TV shows, and celebrities. Explore our extensive database and
+          find your next favorite entertainment.</p>
+      </div>
+      <div id="carouselBanner" class="carousel slide col-5" >
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner h-100 " id="carousel-banner" data-bs-ride="carousel">
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+    </section>
+    <section id="popular-movies" class=" ">
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <h2 class="ms-4 ">Popular Movies</h2>
+        <span class="me-3">see more</span>
+      </div>
+      <div class="d-flex justify-content-center align-items-stretch flex-nowrap overflow-x-auto" id="movies-container">
+
+      </div>
+    </section>
+    <section id="popular-tv-shows" class=" ">
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <h2 class="ms-4 ">Popular TV Shows</h2>
+        <span class="me-3">see more</span>
+      </div>
+      <div class="d-flex justify-content-center align-items-stretch flex-nowrap overflow-x-auto" id="tv-shows-container">
+
+      </div>
+    </section>
+    <section id="top-rated-movies" class=" ">
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <h2 class="ms-4 ">Top Rated Movies</h2>
+        <span class="me-3">see more</span>
+      </div>
+      <div class="d-flex justify-content-center align-items-stretch flex-nowrap overflow-x-auto" id="top-movies-container">
+
+      </div>
+    </section>
+    <section id="top-rated-tv-shows" class=" ">
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <h2 class="ms-4 ">Top Rated TV Shows</h2>
+        <span class="me-3">see more</span>
+      </div>
+      <div class="d-flex justify-content-center align-items-stretch flex-nowrap overflow-x-auto" id="top-tv-shows-container">
+
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <script src="./src/secret.js"></script>
+  <script src="./src/app.js"></script>
 </body>
+
 </html>

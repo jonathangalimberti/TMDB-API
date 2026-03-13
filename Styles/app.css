@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.carousel-control-prev {
+    left: -40px;
+}
+
+.carousel-control-next {
+    right: -40px;
+}
+
+.banner-background {
+  background-image: url('/img/background-banner.png');
+  background-size: cover;
+  background-position: center;
+  
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+/* https://www.canva.com/design/DAHD181DIGk/LDSCMlL4Fv7ho9zpx7Cd9g/edit?utm_content=DAHD181DIGk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+https://images.ecestaticos.com/leU_vr7vwdksdq_fkLknTvqTmlw=/0x90:1696x1041/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F4eb%2Fa77%2F5f9%2F4eba775f9bbe9f2f8c602b8731e81a46.jpg */
